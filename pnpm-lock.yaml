@@ -1,0 +1,49 @@
+lockfileVersion: 5.4
+
+specifiers:
+  '@types/node': ^18.8.5
+  csv: ^6.2.1
+  typescript: ^4.8.4
+
+dependencies:
+  '@types/node': 18.8.5
+  csv: 6.2.1
+  typescript: 4.8.4
+
+packages:
+
+  /@types/node/18.8.5:
+    resolution: { integrity: sha512-Bq7G3AErwe5A/Zki5fdD3O6+0zDChhg671NfPjtIcbtzDNZTv4NPKMRFr7gtYPG7y+B8uTiNK4Ngd9T0FTar6Q== }
+    dev: false
+
+  /csv-generate/4.2.0:
+    resolution: { integrity: sha512-zlIESlGQaYqIhNYwBN2pj5KXNMYbAXZYMOgNoVSoYV8MQyGZwcNWX+kx5LHxocp+zQDqzSgeKh+e+AZs+nCq4Q== }
+    dev: false
+
+  /csv-parse/5.3.1:
+    resolution: { integrity: sha512-R4Hv6eGJNzgcKdThZ6XORbSQ873HVcNke74QIq+LbwpT90LaZ8Xzl7KKiuIP16xq/P7ofzRt0h7S0xm+fVScsw== }
+    dev: false
+
+  /csv-stringify/6.2.0:
+    resolution: { integrity: sha512-dcUbQLRTTDcgQxgEU8V9IctkaCwHZjZfzUZ5ZB3RY8Y+pXtdtl5iVQHfGzANytFFkRKanYzBXrkfpNdGR7eviA== }
+    dev: false
+
+  /csv/6.2.1:
+    resolution: { integrity: sha512-qTEPklcIZkJGaB/j6/2qNXZbKgWSXPVMyRnZvRcb1F7MGyvLqJexlZlbJ3NQkgmUoAeScZhsRHjlZEgImBfCYQ== }
+    engines: { node: '>= 0.1.90' }
+    dependencies:
+      csv-generate: 4.2.0
+      csv-parse: 5.3.1
+      csv-stringify: 6.2.0
+      stream-transform: 3.2.0
+    dev: false
+
+  /stream-transform/3.2.0:
+    resolution: { integrity: sha512-M22v88wNknyJiIyHYoiIYI5RPl/R7tkf92j1YNkmrbe5XRGHW0jW8n458j1njOrR4Edcj8bwbpSV0iLIWon1hg== }
+    dev: false
+
+  /typescript/4.8.4:
+    resolution: { integrity: sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ== }
+    engines: { node: '>=4.2.0' }
+    hasBin: true
+    dev: false
