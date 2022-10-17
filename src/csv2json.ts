@@ -14,6 +14,7 @@ readFile(input).then(file => {
             let record;
             while ((record = this.read()) !== null) {
                 data.push({
+                    class: record.class,
                     type: record.type,
                     content: record.content,
                     options: {

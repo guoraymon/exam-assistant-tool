@@ -31,36 +31,38 @@ async function processLineByLine() {
         if (line.match(/^(\d+) 年成人高等学校专升本招生全国统一考试/)) {
             continue;
         }
-        if (line.match(/^政治试题答案解析/)) {
+        if (line.match(/^(政治试题答案解析|参考答案及解析)/)) {
             console.log('开始解析答案');
             state = STATE.answer;
             continue;
         }
 
-        // 解析题型标识
-        const typeMatch = /^(\S)、(.*)：/.exec(line);
-        if (typeMatch) {
-            console.log('开始解析题型', typeMatch[2]);
+        if (state !== STATE.answer) {
+            // 解析题型标识
+            const typeMatch = /^(\S)、(选择题|辨析题|简答题|论述题)/g.exec(line);
+            if (typeMatch) {
+                console.log('开始解析题型', typeMatch[2]);
 
-            state = STATE.type;
-            type = typeMatch[2];
-            continue;
-        }
-
-        // 解析题干标识
-        if (state === STATE.type || state === STATE.question) {
-            const contentMatch = /^(\d+)[.|\s](.*)/.exec(line);
-            if (contentMatch) {
-                console.log('解析题干', contentMatch[1]);
-
-                state = STATE.question;
-                index = parseInt(contentMatch[1]);
-                data[index] = {
-                    id: index,
-                    type,
-                    content: contentMatch[2],
-                };
+                state = STATE.type;
+                type = typeMatch[2];
                 continue;
+            }
+
+            // 解析题干标识
+            if (state === STATE.type || state === STATE.question) {
+                const contentMatch = /^(\d+)[.|\s](.*)/.exec(line);
+                if (contentMatch) {
+                    console.log('解析题干', contentMatch[1]);
+
+                    state = STATE.question;
+                    index = parseInt(contentMatch[1]);
+                    data[index] = {
+                        id: index,
+                        type,
+                        content: contentMatch[2],
+                    };
+                    continue;
+                }
             }
         }
 
@@ -84,7 +86,7 @@ async function processLineByLine() {
             }
             // 解析答案
             case STATE.answer: {
-                const answerMatch = /^(\d+)\.\s*【答案】(\S*)/.exec(line);
+                const answerMatch = /^(\d+)\.\s*\S*答案\S*\s*(\S+)/.exec(line);
                 if (answerMatch) {
                     console.log('解析答案', answerMatch[1]);
                     index = parseInt(answerMatch[1]);
